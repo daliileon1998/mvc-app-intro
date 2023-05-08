@@ -1,4 +1,4 @@
-package com.uts.invoice.controllers;
+ package com.uts.invoice.controllers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uts.invoice.models.entities.Cliente;
+import com.uts.invoice.models.entities.Region;
 import com.uts.invoice.services.IClienteService;
 
 import jakarta.validation.Valid;
@@ -134,6 +135,11 @@ public class ClienteRestController {
 		response.put("mensaje", "El cliente eliminado con éxito");
 		return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
 		
+	}
+	
+	@GetMapping("/clientes/regiones")
+	public List<Region> listarRegiones(){
+		return clienteService.findAllRegiones();
 	}
 	
 }
